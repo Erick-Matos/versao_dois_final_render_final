@@ -132,19 +132,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const descricao   = petForm.descricao.value.trim();
     const idade       = petForm.idade.value.trim();
     const sexo        = petForm.sexo.value;
-    const codigoPais  = petForm.codigoPais.value.trim();
-    const numeroTel   = petForm.numeroTelefone.value.trim();
+    const codigoPais  = petForm.codigoPais.value.replace(/\\D/g, '');
+    const numeroTel   = petForm.numeroTelefone.value.replace(/\\D/g, '');
     let   imgUrl      = petForm.existingImageUrl.value || '';
 
     if (!nome || !idade || !codigoPais || !numeroTel || !sexo) {
       return alert('Preencha todos os campos!');
     }
 
-    if (!/^\\d+$/.test(codigoPais)) {
+    if (!codigoPais) {
       return alert('Código do país inválido! Use apenas números.');
     }
 
-    if (!/^\\d{8,15}$/.test(numeroTel)) {
+    if (numeroTel.length < 8 || numeroTel.length > 15) {
       return alert('Telefone inválido! Use só números, de 8 a 15 dígitos.');
     }
 
@@ -190,7 +190,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadAnuncios();
 
-  // Modal de descrição
   const modalDescricao = document.getElementById('descricaoModal');
   const modalTexto     = document.getElementById('descricaoTexto');
   const closeDescricao = document.getElementById('closeDescricaoModal');
