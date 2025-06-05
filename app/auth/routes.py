@@ -29,16 +29,20 @@ def token_required(f):
 @auth_bp.route('/register', methods=['POST'])
 def register():
     data = request.json or {}
+    
     if Usuario.query.filter_by(email=data.get('email')).first():
         return jsonify({'message':'Email já cadastrado'}), 400
+
     hashed = generate_password_hash(data.get('senha'))
+
     user = Usuario(
         nome=data.get('nome'),
         email=data.get('email'),
         senha=hashed,
-        telefone='+55'+data.get('telefone'),
+        telefone=None,  # Ou '' se preferir string vazia
         is_admin=False
     )
+
     db.session.add(user)
     db.session.commit()
     return jsonify({'message':'Usuário criado'}), 201
@@ -49,10 +53,12 @@ def login():
     user = Usuario.query.filter_by(email=data.get('email')).first()
     if not user or not check_password_hash(user.senha, data.get('senha')):
         return jsonify({'message':'Credenciais inválidas'}), 401
+
     token = jwt.encode({
         'id': user.id,
         'exp': datetime.utcnow() + timedelta(hours=24)
     }, os.getenv('SECRET_KEY'), algorithm='HS256')
+
     return jsonify({'token': token, 'user_id': user.id, 'admin': str(user.is_admin).lower()}), 200
 
 @auth_bp.route('/me', methods=['GET'])

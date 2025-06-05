@@ -18,15 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (signUpForm) {
     signUpForm.addEventListener('submit', async e => {
       e.preventDefault();
-      const nome     = document.getElementById('signupName').value.trim();
-      const email    = document.getElementById('signupEmail').value.trim();
-      const senha    = document.getElementById('signupPassword').value.trim();
-      const telefone = document.getElementById('signupPhone').value.trim();
+      const nome  = document.getElementById('signupName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim();
+      const senha = document.getElementById('signupPassword').value.trim();
 
       const res = await fetch(`${baseUrl}/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nome, email, senha, telefone })
+        body: JSON.stringify({ nome, email, senha })
       });
 
       const data = await res.json();
@@ -52,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, senha })
       });
+
       const data = await res.json();
       if (res.ok) {
         localStorage.setItem('token', data.token);
