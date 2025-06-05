@@ -5,7 +5,7 @@ class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    senha = db.Column(db.String(128), nullable=False)
+    senha = db.Column(db.String(512), nullable=False)
     telefone = db.Column(db.String(20), nullable=True)
     is_admin = db.Column(db.Boolean, default=False)
     anuncios = db.relationship('Anuncio', backref='usuario', cascade='all, delete-orphan')
