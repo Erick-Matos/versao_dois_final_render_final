@@ -1,6 +1,7 @@
-from app import create_app
-
-app = create_app()
-
-if __name__ == '__main__':
-    app.run()
+flask
+flask_sqlalchemy
+flask_migrate
+flask_cors
+gunicorn
+psycopg2-binary
+cloudinary
