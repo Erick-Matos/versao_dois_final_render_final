@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard – Adote um amigo!</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
+</head>
+<body>
+  <header class="dashboard-header">
+    <h1>Meus Anúncios</h1>
+    <button class="btn-anuncio">Criar anúncio</button>
+  </header>
+
+  <div class="pet-lista" id="petList">
+    <!-- Cards de anúncios serão inseridos aqui via JS -->
+  </div>
+
+  <!-- Modal para formulário de anúncio -->
+  <div id="petFormModal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="close-btn" id="closeModal">×</button>
+      <h2 id="formTitle">Novo Anúncio</h2>
+      <form id="petForm">
+        <input type="hidden" name="anuncioId" />
+        <input type="hidden" name="existingImageUrl" />
+        <input type="text" name="titulo" placeholder="Nome do Pet" required />
+        <textarea name="descricao" placeholder="Descrição do pet"></textarea>
+        <input type="number" name="idade" placeholder="Idade" required />
+        <select name="sexo" required>
+          <option value="" disabled selected>Sexo</option>
+          <option value="Macho">Macho</option>
+          <option value="Fêmea">Fêmea</option>
+        </select>
+        <label for="imagem">Imagem do Pet</label>
+<input type="file" name="imagem" id="imagem" accept="image/*" />
+
+<!-- TELEFONE SEPARADO -->
+        <div class="telefone-group">
+          <span class="telefone-mais">+</span>
+          <input
+            type="text"
+            id="codigoPais"
+            name="codigoPais"
+            value="55"
+            maxlength="3"
+            style="width: 55px; text-align: center;"
+            required
+            autocomplete="off"
+            pattern="\d+"
+            title="Somente números"
+          />
+          <input
+            type="text"
+            id="numeroTelefone"
+            name="numeroTelefone"
+            placeholder="79999999999"
+            maxlength="15"
+            style="flex: 1;"
+            required
+            autocomplete="off"
+            pattern="\d+"
+            title="Somente números"
+          />
+        </div>
+        <input type="file" name="imagem" accept="image/*" />
+        <button type="submit">Salvar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de descrição -->
+  <div id="descricaoModal" class="descricao-modal">
+    <div class="descricao-modal-content">
+      <button class="descricao-modal-close" id="closeDescricaoModal">&times;</button>
+      <h2>Descrição</h2>
+      <div id="descricaoTexto"></div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

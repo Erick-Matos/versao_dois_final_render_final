@@ -1,0 +1,13 @@
+Flask
+Flask-CORS
+Flask-Migrate
+Flask-SQLAlchemy
+Flask==2.3.2
+Flask_Cors==4.0.0
+Flask_Migrate==4.0.4
+Flask_SQLAlchemy==3.0.3
+PyJWT==2.8.0
+Werkzeug==2.3.4
+gunicorn
+gunicorn==20.1.0
+psycopg2-binary>=2.9

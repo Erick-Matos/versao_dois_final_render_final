@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Link para Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <!-- Link para arquivos CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <title>Login – Adote um amigo!</title>
+</head>
+<body>
+  <div class="container" id="container">
+    <!-- Formulário de Login -->
+    <div class="form-container sign-in">
+      <form id="loginForm">
+        <h1>Entrar</h1>
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Senha" required />
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
+
+    <!-- Formulário de Cadastro -->
+    <div class="form-container sign-up">
+      <form id="signUpForm">
+        <h1>Cadastrar</h1>
+        <input type="text" id="signupName" placeholder="Nome" required />
+        <input type="email" id="signupEmail" placeholder="Email" required />
+        <input type="password" id="signupPassword" placeholder="Senha" required />
+        <input type="text" id="signupPhone" placeholder="Telefone" required />
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+
+    <!-- Elementos visuais da esquerda/direita -->
+    <div class="toggle-container">
+      <div class="toggle">
+        <div class="toggle-panel toggle-left">
+          <h1>Bem-vindo de volta!</h1>
+          <p>Para manter-se conectado, por favor entre com seus dados pessoais</p>
+          <button class="hidden" id="signIn">Entrar</button>
+        </div>
+        <div class="toggle-panel toggle-right">
+          <h1>Olá, Amigo!</h1>
+          <p>Insira os seus dados pessoais e comece sua jornada conosco</p>
+          <button class="hidden" id="signUp">Cadastre-se</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS do Font Awesome (icons) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+  <!-- Script principal -->
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
