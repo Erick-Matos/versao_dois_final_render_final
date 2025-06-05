@@ -5,3 +5,4 @@ flask_cors
 gunicorn
 psycopg2-binary
 cloudinary
+PyJWT
